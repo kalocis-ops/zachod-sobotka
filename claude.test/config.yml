@@ -1,0 +1,96 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+locale: pl
+
+collections:
+
+  - name: "aktualnosci"
+    label: "Aktualności"
+    files:
+      - name: "lista"
+        label: "Lista wpisów"
+        file: "data/aktualnosci.json"
+        fields:
+          - name: wpisy
+            label: Wpisy
+            widget: list
+            fields:
+              - { label: "Tytuł", name: title, widget: string }
+              - { label: "Data", name: date, widget: string, hint: "np. 1 marca 2026" }
+              - { label: "Lokalizacja / podtytuł", name: location, widget: string, required: false }
+              - label: "Tag"
+                name: tag
+                widget: select
+                options:
+                  - { label: "Sparing", value: "Sparing" }
+                  - { label: "IV Liga", value: "IV Liga" }
+                  - { label: "Akademia", value: "Akademia" }
+                  - { label: "Klub", value: "Klub" }
+                  - { label: "Transfery", value: "Transfery" }
+              - label: "Kolor tagu"
+                name: tagColor
+                widget: select
+                options:
+                  - { label: "Żółty", value: "yellow" }
+                  - { label: "Niebieski", value: "blue" }
+              - { label: "Wynik (opcjonalnie, np. 4 : 2)", name: score, widget: string, required: false }
+              - { label: "Opis wyniku (np. Zachód – Żarów)", name: scoreLabel, widget: string, required: false }
+              - { label: "Treść akapitu 1", name: content1, widget: text }
+              - { label: "Treść akapitu 2", name: content2, widget: text, required: false }
+              - { label: "Treść akapitu 3", name: content3, widget: text, required: false }
+              - { label: "Tag 1 (etykieta)", name: tag1, widget: string, required: false }
+              - { label: "Tag 2 (etykieta)", name: tag2, widget: string, required: false }
+
+  - name: "druzyna"
+    label: "Drużyna"
+    files:
+      - name: "lista"
+        label: "Zawodnicy i sztab"
+        file: "data/druzyna.json"
+        fields:
+          - name: sztab
+            label: Sztab szkoleniowy
+            widget: list
+            fields:
+              - { label: "Rola", name: rola, widget: string }
+              - { label: "Imię i nazwisko", name: imie, widget: string }
+              - { label: "Inicjał (litera w kółku)", name: inicjal, widget: string }
+          - name: zawodnicy
+            label: Zawodnicy
+            widget: list
+            fields:
+              - { label: "Numer", name: numer, widget: string }
+              - { label: "Imię i nazwisko", name: imie, widget: string }
+              - label: "Pozycja"
+                name: pozycja
+                widget: select
+                options:
+                  - { label: "Bramkarz", value: "Bramkarz" }
+                  - { label: "Obrońca", value: "Obrońca" }
+                  - { label: "Pomocnik", value: "Pomocnik" }
+                  - { label: "Napastnik", value: "Napastnik" }
+                  - { label: "Napastnik · Kapitan", value: "Napastnik · Kapitan" }
+              - label: "Kolor koszulki"
+                name: koszulka
+                widget: select
+                options:
+                  - { label: "Niebieski", value: "blue" }
+                  - { label: "Żółty", value: "yellow" }
+
+  - name: "ustawienia"
+    label: "Dane klubu"
+    files:
+      - name: "kontakt"
+        label: "Kontakt i treningi"
+        file: "data/ustawienia.json"
+        fields:
+          - { label: "Adres stadionu", name: adres, widget: string }
+          - { label: "E-mail", name: email, widget: string }
+          - { label: "Treningi seniorzy", name: treningi_seniorzy, widget: string }
+          - { label: "Akademia – godziny", name: akademia_godziny, widget: string }
+          - { label: "Grupy wiekowe Akademii", name: akademia_grupy, widget: string }
