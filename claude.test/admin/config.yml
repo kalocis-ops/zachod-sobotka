@@ -94,6 +94,3 @@ collections:
           - { label: "Treningi seniorzy", name: treningi_seniorzy, widget: string }
           - { label: "Akademia – godziny", name: akademia_godziny, widget: string }
           - { label: "Grupy wiekowe Akademii", name: akademia_grupy, widget: string }
-
-          - { label: "Akademia – godziny", name: akademia_godziny, widget: string }
-          - { label: "Grupy wiekowe Akademii", name: akademia_grupy, widget: string }

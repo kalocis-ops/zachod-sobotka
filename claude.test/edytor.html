@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edytor – MKS Zachód Sobótka</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f0f2f5; color: #111; }
+    header { background: #003DA5; color: #fff; padding: 16px 24px; display: flex; align-items: center; gap: 12px; }
+    header span { font-size: 11px; color: #F5C400; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+    header h1 { font-size: 18px; font-weight: 900; }
+    .tabs { background: #fff; border-bottom: 2px solid #e5e5e5; display: flex; padding: 0 24px; }
+    .tab { padding: 14px 20px; font-size: 13px; font-weight: 700; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+    .tab.active { color: #003DA5; border-bottom-color: #003DA5; }
+    .tab:hover { color: #003DA5; }
+    .content { max-width: 900px; margin: 32px auto; padding: 0 16px; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .card { background: #fff; border: 1px solid #e5e5e5; border-radius: 4px; padding: 24px; margin-bottom: 20px; }
+    .card-title { font-size: 14px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; color: #003DA5; margin-bottom: 16px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+    label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #666; margin-bottom: 4px; margin-top: 12px; }
+    input, textarea, select { width: 100%; padding: 8px 10px; border: 1px solid #ddd; font-size: 13px; font-family: Arial, sans-serif; border-radius: 2px; }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: #003DA5; }
+    textarea { resize: vertical; min-height: 80px; }
+    .btn { background: #003DA5; color: #fff; border: none; padding: 10px 20px; font-size: 13px; font-weight: 700; cursor: pointer; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .btn:hover { background: #002d80; }
+    .btn-red { background: #c0392b; }
+    .btn-red:hover { background: #a93226; }
+    .btn-green { background: #27ae60; }
+    .btn-green:hover { background: #219a52; }
+    .btn-sm { padding: 6px 12px; font-size: 11px; }
+    .actions { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+    .news-item { border: 1px solid #e5e5e5; border-radius: 4px; padding: 16px; margin-bottom: 12px; position: relative; }
+    .news-item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .news-num { font-size: 11px; font-weight: 700; color: #999; text-transform: uppercase; }
+    .player-item { display: grid; grid-template-columns: 60px 1fr 1fr 1fr; gap: 8px; align-items: center; border: 1px solid #eee; padding: 10px; margin-bottom: 6px; border-radius: 2px; background: #fafafa; }
+    .player-item input, .player-item select { margin-top: 0; }
+    .save-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; border-top: 2px solid #003DA5; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center; z-index: 100; }
+    .save-bar span { font-size: 12px; color: #888; }
+    .status { font-size: 12px; padding: 8px 12px; border-radius: 2px; display: inline-block; }
+    .status.ok { background: #d4edda; color: #155724; }
+    .status.err { background: #f8d7da; color: #721c24; }
+    .hint { font-size: 11px; color: #aaa; margin-top: 3px; }
+    .sztab-item { display: grid; grid-template-columns: 1fr 1fr 80px; gap: 8px; align-items: center; border: 1px solid #eee; padding: 10px; margin-bottom: 6px; border-radius: 2px; background: #fafafa; }
+    .sztab-item input { margin-top: 0; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 600px) { .grid2 { grid-template-columns: 1fr; } .player-item { grid-template-columns: 50px 1fr; } }
+    .mb32 { margin-bottom: 32px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <span>Panel edytora</span>
+    <h1>MKS Zachód Sobótka</h1>
+  </div>
+</header>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('aktualnosci')">Aktualności</div>
+  <div class="tab" onclick="switchTab('druzyna')">Drużyna</div>
+  <div class="tab" onclick="switchTab('ustawienia')">Dane klubu</div>
+</div>
+
+<div class="content">
+
+  <!-- AKTUALNOŚCI -->
+  <div id="tab-aktualnosci" class="panel active">
+    <div class="card">
+      <div class="card-title">Aktualności</div>
+      <div id="news-list"></div>
+      <button class="btn btn-green" onclick="addNews()">+ Dodaj aktualność</button>
+    </div>
+    <div class="actions">
+      <button class="btn" onclick="saveAktualnosci()">Zapisz plik aktualnosci.json</button>
+      <span id="status-aktualnosci"></span>
+    </div>
+  </div>
+
+  <!-- DRUŻYNA -->
+  <div id="tab-druzyna" class="panel">
+    <div class="card mb32">
+      <div class="card-title">Sztab szkoleniowy</div>
+      <div id="sztab-list"></div>
+      <button class="btn btn-green btn-sm" style="margin-top:10px;" onclick="addSztab()">+ Dodaj osobę</button>
+    </div>
+    <div class="card mb32">
+      <div class="card-title">Zawodnicy</div>
+      <div style="display:grid;grid-template-columns:60px 1fr 1fr 1fr;gap:8px;padding:0 10px 6px;font-size:10px;font-weight:700;color:#999;text-transform:uppercase;">
+        <span>Nr</span><span>Imię i nazwisko</span><span>Pozycja</span><span>Koszulka</span>
+      </div>
+      <div id="players-list"></div>
+      <button class="btn btn-green btn-sm" style="margin-top:10px;" onclick="addPlayer()">+ Dodaj zawodnika</button>
+    </div>
+    <div class="actions">
+      <button class="btn" onclick="saveDruzyna()">Zapisz plik druzyna.json</button>
+      <span id="status-druzyna"></span>
+    </div>
+  </div>
+
+  <!-- USTAWIENIA -->
+  <div id="tab-ustawienia" class="panel">
+    <div class="card">
+      <div class="card-title">Dane kontaktowe i treningi</div>
+      <label>Adres stadionu</label>
+      <input type="text" id="u-adres" />
+      <label>E-mail</label>
+      <input type="text" id="u-email" />
+      <label>Treningi seniorzy</label>
+      <input type="text" id="u-treningi" />
+      <p class="hint">np. Wtorek, Czwartek: 18:00 – 20:00 | Sobota: 10:00 – 12:00</p>
+      <label>Akademia – godziny</label>
+      <input type="text" id="u-akademia-godz" />
+      <label>Akademia – grupy wiekowe</label>
+      <input type="text" id="u-akademia-grupy" />
+    </div>
+    <div class="actions">
+      <button class="btn" onclick="saveUstawienia()">Zapisz plik ustawienia.json</button>
+      <span id="status-ustawienia"></span>
+    </div>
+  </div>
+
+</div>
+<div style="height:60px;"></div>
+
+<script>
+// ── DANE ──────────────────────────────────────────────────────────────────────
+let aktualnosci = { wpisy: [] };
+let druzyna = { sztab: [], zawodnicy: [] };
+let ustawienia = {};
+
+// ── WCZYTAJ PLIKI ─────────────────────────────────────────────────────────────
+async function loadAll() {
+  try {
+    const r1 = await fetch('data/aktualnosci.json?' + Date.now());
+    aktualnosci = await r1.json();
+  } catch(e) { aktualnosci = { wpisy: [] }; }
+
+  try {
+    const r2 = await fetch('data/druzyna.json?' + Date.now());
+    druzyna = await r2.json();
+  } catch(e) { druzyna = { sztab: [], zawodnicy: [] }; }
+
+  try {
+    const r3 = await fetch('data/ustawienia.json?' + Date.now());
+    ustawienia = await r3.json();
+  } catch(e) { ustawienia = {}; }
+
+  renderAll();
+}
+
+function renderAll() {
+  renderNews();
+  renderDruzyna();
+  renderUstawienia();
+}
+
+// ── TABS ──────────────────────────────────────────────────────────────────────
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── AKTUALNOŚCI ───────────────────────────────────────────────────────────────
+function renderNews() {
+  const el = document.getElementById('news-list');
+  el.innerHTML = aktualnosci.wpisy.map((w, i) => `
+    <div class="news-item">
+      <div class="news-item-header">
+        <span class="news-num">Aktualność #${i+1}</span>
+        <button class="btn btn-red btn-sm" onclick="removeNews(${i})">Usuń</button>
+      </div>
+      <div class="grid2">
+        <div>
+          <label>Tytuł</label>
+          <input type="text" value="${esc(w.title||'')}" onchange="aktualnosci.wpisy[${i}].title=this.value" />
+        </div>
+        <div>
+          <label>Data</label>
+          <input type="text" value="${esc(w.date||'')}" placeholder="np. 1 marca 2026" onchange="aktualnosci.wpisy[${i}].date=this.value" />
+        </div>
+        <div>
+          <label>Lokalizacja</label>
+          <input type="text" value="${esc(w.location||'')}" onchange="aktualnosci.wpisy[${i}].location=this.value" />
+        </div>
+        <div>
+          <label>Tag</label>
+          <select onchange="aktualnosci.wpisy[${i}].tag=this.value">
+            ${['Sparing','IV Liga','Akademia','Klub','Transfery'].map(t=>`<option ${w.tag===t?'selected':''}>${t}</option>`).join('')}
+          </select>
+        </div>
+        <div>
+          <label>Wynik (np. 4 : 2)</label>
+          <input type="text" value="${esc(w.score||'')}" onchange="aktualnosci.wpisy[${i}].score=this.value" />
+        </div>
+        <div>
+          <label>Opis wyniku</label>
+          <input type="text" value="${esc(w.scoreLabel||'')}" placeholder="np. Zachód – Żarów" onchange="aktualnosci.wpisy[${i}].scoreLabel=this.value" />
+        </div>
+      </div>
+      <label>Treść akapitu 1</label>
+      <textarea onchange="aktualnosci.wpisy[${i}].content1=this.value">${esc(w.content1||'')}</textarea>
+      <label>Treść akapitu 2 (opcjonalnie)</label>
+      <textarea onchange="aktualnosci.wpisy[${i}].content2=this.value">${esc(w.content2||'')}</textarea>
+      <label>Treść akapitu 3 (opcjonalnie)</label>
+      <textarea onchange="aktualnosci.wpisy[${i}].content3=this.value">${esc(w.content3||'')}</textarea>
+    </div>
+  `).join('');
+}
+
+function addNews() {
+  aktualnosci.wpisy.unshift({ title:'', date:'', location:'', tag:'Sparing', tagColor:'yellow', score:'', scoreLabel:'', content1:'', content2:'', content3:'' });
+  renderNews();
+}
+function removeNews(i) {
+  if (confirm('Usunąć tę aktualność?')) { aktualnosci.wpisy.splice(i,1); renderNews(); }
+}
+
+function saveAktualnosci() {
+  downloadJSON('aktualnosci.json', aktualnosci);
+  showStatus('status-aktualnosci', 'Pobrano aktualnosci.json — wgraj do folderu data/');
+}
+
+// ── DRUŻYNA ───────────────────────────────────────────────────────────────────
+function renderDruzyna() {
+  const sztabEl = document.getElementById('sztab-list');
+  sztabEl.innerHTML = druzyna.sztab.map((s,i) => `
+    <div class="sztab-item">
+      <input type="text" value="${esc(s.rola||'')}" placeholder="Rola" onchange="druzyna.sztab[${i}].rola=this.value" />
+      <input type="text" value="${esc(s.imie||'')}" placeholder="Imię i nazwisko" onchange="druzyna.sztab[${i}].imie=this.value" />
+      <input type="text" value="${esc(s.inicjal||'')}" placeholder="Litera" style="text-align:center;" onchange="druzyna.sztab[${i}].inicjal=this.value" />
+    </div>
+  `).join('');
+
+  const playersEl = document.getElementById('players-list');
+  playersEl.innerHTML = druzyna.zawodnicy.map((z,i) => `
+    <div class="player-item">
+      <input type="text" value="${esc(z.numer||'')}" placeholder="Nr" style="text-align:center;" onchange="druzyna.zawodnicy[${i}].numer=this.value" />
+      <input type="text" value="${esc(z.imie||'')}" placeholder="Imię i nazwisko" onchange="druzyna.zawodnicy[${i}].imie=this.value" />
+      <select onchange="druzyna.zawodnicy[${i}].pozycja=this.value">
+        ${['Bramkarz','Obrońca','Pomocnik','Napastnik','Napastnik · Kapitan'].map(p=>`<option ${z.pozycja===p?'selected':''}>${p}</option>`).join('')}
+      </select>
+      <select onchange="druzyna.zawodnicy[${i}].koszulka=this.value">
+        <option value="blue" ${z.koszulka==='blue'?'selected':''}>Niebieska</option>
+        <option value="yellow" ${z.koszulka==='yellow'?'selected':''}>Żółta</option>
+      </select>
+    </div>
+  `).join('');
+}
+
+function addSztab() {
+  druzyna.sztab.push({ rola:'', imie:'', inicjal:'' });
+  renderDruzyna();
+}
+function addPlayer() {
+  druzyna.zawodnicy.push({ numer:'', imie:'', pozycja:'Pomocnik', koszulka:'blue', kapitan:false });
+  renderDruzyna();
+}
+function saveDruzyna() {
+  downloadJSON('druzyna.json', druzyna);
+  showStatus('status-druzyna', 'Pobrano druzyna.json — wgraj do folderu data/');
+}
+
+// ── USTAWIENIA ────────────────────────────────────────────────────────────────
+function renderUstawienia() {
+  document.getElementById('u-adres').value = ustawienia.adres || '';
+  document.getElementById('u-email').value = ustawienia.email || '';
+  document.getElementById('u-treningi').value = ustawienia.treningi_seniorzy || '';
+  document.getElementById('u-akademia-godz').value = ustawienia.akademia_godziny || '';
+  document.getElementById('u-akademia-grupy').value = ustawienia.akademia_grupy || '';
+}
+function saveUstawienia() {
+  ustawienia.adres = document.getElementById('u-adres').value;
+  ustawienia.email = document.getElementById('u-email').value;
+  ustawienia.treningi_seniorzy = document.getElementById('u-treningi').value;
+  ustawienia.akademia_godziny = document.getElementById('u-akademia-godz').value;
+  ustawienia.akademia_grupy = document.getElementById('u-akademia-grupy').value;
+  downloadJSON('ustawienia.json', ustawienia);
+  showStatus('status-ustawienia', 'Pobrano ustawienia.json — wgraj do folderu data/');
+}
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function downloadJSON(filename, data) {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  a.click();
+}
+
+function showStatus(id, msg) {
+  const el = document.getElementById(id);
+  el.className = 'status ok';
+  el.textContent = msg;
+  setTimeout(() => el.textContent = '', 8000);
+}
+
+// ── START ─────────────────────────────────────────────────────────────────────
+loadAll();
+</script>
+
+</body>
+</html>
