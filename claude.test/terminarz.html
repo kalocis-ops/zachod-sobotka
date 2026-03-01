@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminarz – MKS Zachód Sobótka</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; background: #f5f5f5; }
+    .top-nav-link { font-size: 11px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; padding: 0 8px; white-space: nowrap; opacity: 0.9; cursor: pointer; text-decoration: none; }
+    .top-nav-link:hover { opacity: 1; color: #F5C400; }
+    .nav-active { color: #F5C400 !important; }
+    .section-title { font-size: 22px; font-weight: 900; text-transform: uppercase; color: #111; border-left: 4px solid #003DA5; padding-left: 12px; margin-bottom: 20px; }
+    .round-header { background: #003DA5; color: #fff; font-size: 13px; font-weight: 900; letter-spacing: 1px; text-transform: uppercase; padding: 10px 16px; }
+    .matchday-label { background: #f0f4ff; color: #003DA5; font-size: 11px; font-weight: 700; padding: 7px 16px; border-bottom: 1px solid #dde5ff; }
+    .match-row { display: grid; grid-template-columns: 1fr 70px 1fr 90px; align-items: center; padding: 12px 16px; border-bottom: 1px solid #eee; background: #fff; gap: 8px; }
+    .match-row:hover { background: #fafbff; }
+    .team { font-size: 13px; font-weight: 700; color: #111; }
+    .team.zachod { color: #003DA5; }
+    .team-away { text-align: right; }
+    .score { text-align: center; font-size: 18px; font-weight: 900; padding: 4px 10px; border-radius: 4px; background: #f0f0f0; color: #333; white-space: nowrap; }
+    .score.win { background: #003DA5; color: #fff; }
+    .score.loss { background: #cc0000; color: #fff; }
+    .score.draw { background: #777; color: #fff; }
+    .score.upcoming { background: #eee; color: #aaa; font-size: 13px; }
+    .meta { font-size: 10px; color: #888; text-align: right; line-height: 1.5; }
+    .badge-home { display: inline-block; font-size: 9px; font-weight: 700; background: #F5C400; color: #003DA5; padding: 1px 5px; border-radius: 2px; margin-left: 4px; vertical-align: middle; }
+    @media (max-width: 640px) {
+      .match-row { grid-template-columns: 1fr 60px 1fr; }
+      .meta { display: none; }
+      .team { font-size: 11px; }
+      .score { font-size: 15px; padding: 3px 7px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="bg-black border-b border-gray-800" style="min-height:40px;">
+  <div class="max-w-6xl mx-auto flex items-center justify-between px-3" style="height:40px;">
+    <a href="index.html" class="flex items-center gap-2 flex-shrink-0" style="text-decoration:none;">
+      <img src="logo2.jpg" alt="MKS Zachód Sobótka" style="height:36px;width:auto;object-fit:contain;" />
+      <div>
+        <div style="font-size:11px;font-weight:900;color:#fff;letter-spacing:1px;line-height:1;">MKS ZACHÓD</div>
+        <div style="font-size:7px;color:#F5C400;letter-spacing:2px;font-weight:700;">SOBÓTKA</div>
+      </div>
+    </a>
+    <nav class="flex items-center gap-1 overflow-x-auto">
+      <a href="aktualnosci.html" class="top-nav-link">Aktualności</a>
+      <a href="o-nas.html" class="top-nav-link">O nas</a>
+      <a href="druzyna.html" class="top-nav-link">Drużyna</a>
+      <a href="terminarz.html" class="top-nav-link nav-active">Terminarz</a>
+      <a href="kontakt.html" class="top-nav-link">Kontakt</a>
+    </nav>
+    <div class="flex-shrink-0"></div>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div style="background:#003DA5;padding:32px 16px 28px;">
+  <div class="max-w-4xl mx-auto">
+    <div style="font-size:12px;color:#F5C400;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Sezon 2025/2026</div>
+    <h1 style="font-size:30px;font-weight:900;color:#fff;margin-bottom:4px;">Terminarz 2026/2027</h1>
+    <p style="font-size:13px;color:rgba(255,255,255,0.7);">Klasa B · Grupa 7 Wrocław · MKS Zachód Sobótka</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="max-w-4xl mx-auto" style="padding:24px 16px 48px;">
+
+  <!-- RUNDA JESIENNA -->
+  <div style="margin-bottom:32px;border-radius:6px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,0.08);">
+    <div class="round-header">&#127342; Runda Jesienna 2025</div>
+
+    <!-- Kolejka 1 -->
+    <div class="matchday-label">Kolejka 1 · 24.08.2025</div>
+    <div class="match-row">
+      <div class="team zachod">ZACHÓD SOBÓTKA <span class="badge-home">DOM</span></div>
+      <div class="score loss">1 : 6</div>
+      <div class="team team-away">TARANT KRZYŻOWICE</div>
+      <div class="meta">24.08.2025 · 17:00<br/>Polna 1, Sobótka</div>
+    </div>
+
+    <!-- Kolejka 2 -->
+    <div class="matchday-label">Kolejka 2 · 31.08.2025</div>
+    <div class="match-row">
+      <div class="team">WICHER DOMASŁAW <span class="badge-home">DOM</span></div>
+      <div class="score win">1 : 2</div>
+      <div class="team team-away zachod">ZACHÓD SOBÓTKA</div>
+      <div class="meta">31.08.2025 · 13:00<br/>Sportowa 2, Kobierzyce</div>
+    </div>
+
+    <!-- Kolejka 3 -->
+    <div class="matchday-label">Kolejka 3 · 07.09.2025</div>
+    <div class="match-row">
+      <div class="team zachod">ZACHÓD SOBÓTKA <span class="badge-home">DOM</span></div>
+      <div class="score win">3 : 2</div>
+      <div class="team team-away">LKS SADKÓW</div>
+      <div class="meta">07.09.2025 · 11:00<br/>Polna 1, Sobótka</div>
+    </div>
+
+    <!-- Kolejka 4 -->
+    <div class="matchday-label">Kolejka 4 · 14.09.2025</div>
+    <div class="match-row">
+      <div class="team">KP II KĄTY WROCŁAWSKIE <span class="badge-home">DOM</span></div>
+      <div class="score loss">6 : 0</div>
+      <div class="team team-away zachod">ZACHÓD SOBÓTKA</div>
+      <div class="meta">14.09.2025 · 16:00</div>
+    </div>
+
+    <!-- Kolejka 5 -->
+    <div class="matchday-label">Kolejka 5 · 21.09.2025</div>
+    <div class="match-row">
+      <div class="team zachod">ZACHÓD SOBÓTKA <span class="badge-home">DOM</span></div>
+      <div class="score loss">1 : 3</div>
+      <div class="team team-away">ORZEŁ SADOWICE</div>
+      <div class="meta">21.09.2025 · 11:00<br/>Polna 1, Sobótka</div>
+    </div>
+
+    <!-- Kolejka 6 -->
+    <div class="matchday-label">Kolejka 6 · 28.09.2025</div>
+    <div class="match-row">
+      <div class="team">KS SPARTA PUSTKÓW ŻURAWSKI <span class="badge-home">DOM</span></div>
+      <div class="score loss">5 : 2</div>
+      <div class="team team-away zachod">ZACHÓD SOBÓTKA</div>
+      <div class="meta">28.09.2025 · 11:00<br/>Kolejowa 48, Kobierzyce</div>
+    </div>
+
+    <!-- Kolejka 7 -->
+    <div class="matchday-label">Kolejka 7 · 05.10.2025</div>
+    <div class="match-row">
+      <div class="team zachod">ZACHÓD SOBÓTKA <span class="badge-home">DOM</span></div>
+      <div class="score win">3 : 0</div>
+      <div class="team team-away">KP II KOBIERZYCE</div>
+      <div class="meta">05.10.2025 · 11:00<br/>Polna 1, Sobótka</div>
+    </div>
+
+    <!-- Kolejka 8 -->
+    <div class="matchday-label">Kolejka 8 · 12.10.2025</div>
+    <div class="match-row">
+      <div class="team zachod">ZACHÓD SOBÓTKA <span class="badge-home">DOM</span></div>
+      <div class="score loss">1 : 6</div>
+      <div class="team team-away">KS MAGNICE</div>
+      <div class="meta">12.10.2025 · 11:00<br/>Polna 1, Sobótka</div>
+    </div>
+
+    <!-- Kolejka 9 -->
+    <div class="matchday-label">Kolejka 9 · 19.10.2025</div>
+    <div class="match-row">
+      <div class="team">POLONIA JAKSONÓW <span class="badge-home">DOM</span></div>
+      <div class="score loss">3 : 1</div>
+      <div class="team team-away zachod">ZACHÓD SOBÓTKA</div>
+      <div class="meta">19.10.2025 · 11:00<br/>Wrocławska 1, Jaksonów</div>
+    </div>
+
+    <!-- Kolejka 10 -->
+    <div class="matchday-label">Kolejka 10 · 26.10.2025</div>
+    <div class="match-row">
+      <div class="team zachod">ZACHÓD SOBÓTKA <span class="badge-home">DOM</span></div>
+      <div class="score win">2 : 0</div>
+      <div class="team team-away">GLKS MIETKÓW</div>
+      <div class="meta">26.10.2025 · 14:00<br/>Polna 1, Sobótka</div>
+    </div>
+
+    <!-- Kolejka 11 -->
+    <div class="matchday-label">Kolejka 11 · 09.11.2025</div>
+    <div class="match-row">
+      <div class="team">KS PIOTROWICE <span class="badge-home">DOM</span></div>
+      <div class="score draw">4 : 4</div>
+      <div class="team team-away zachod">ZACHÓD SOBÓTKA</div>
+      <div class="meta">09.11.2025 · 11:00<br/>Piotrowice</div>
+    </div>
+  </div>
+
+  <!-- RUNDA WIOSENNA -->
+  <div style="border-radius:6px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,0.08);">
+    <div class="round-header" style="background:#F5C400;color:#003DA5;">&#127800; Runda Wiosenna 2026</div>
+
+    <!-- Kolejka 12 -->
+    <div class="matchday-label">Kolejka 12 · 29.03.2026</div>
+    <div class="match-row">
+      <div class="team">TARANT KRZYŻOWICE <span class="badge-home">DOM</span></div>
+      <div class="score upcoming">– : –</div>
+      <div class="team team-away zachod">ZACHÓD SOBÓTKA</div>
+      <div class="meta">29.03.2026 · 14:00<br/>Główna 18, Kobierzyce</div>
+    </div>
+
+    <!-- Kolejka 13 -->
+    <div class="matchday-label">Kolejka 13 · 12.04.2026</div>
+    <div class="match-row">
+      <div class="team zachod">ZACHÓD SOBÓTKA <span class="badge-home">DOM</span></div>
+      <div class="score win">3 : 0</div>
+      <div class="team team-away">WICHER DOMASŁAW</div>
+      <div class="meta">12.04.2026</div>
+    </div>
+
+    <!-- Kolejka 14 -->
+    <div class="matchday-label">Kolejka 14 · 19.04.2026</div>
+    <div class="match-row">
+      <div class="team">LKS SADKÓW <span class="badge-home">DOM</span></div>
+      <div class="score upcoming">– : –</div>
+      <div class="team team-away zachod">ZACHÓD SOBÓTKA</div>
+      <div class="meta">19.04.2026 · 11:00</div>
+    </div>
+
+    <!-- Kolejka 15 -->
+    <div class="matchday-label">Kolejka 15 · 26.04.2026</div>
+    <div class="match-row">
+      <div class="team zachod">ZACHÓD SOBÓTKA <span class="badge-home">DOM</span></div>
+      <div class="score upcoming">– : –</div>
+      <div class="team team-away">KP II KĄTY WROCŁAWSKIE</div>
+      <div class="meta">26.04.2026 · 11:00</div>
+    </div>
+
+    <!-- Kolejka 16 -->
+    <div class="matchday-label">Kolejka 16 · 03.05.2026</div>
+    <div class="match-row">
+      <div class="team">ORZEŁ SADOWICE <span class="badge-home">DOM</span></div>
+      <div class="score upcoming">– : –</div>
+      <div class="team team-away zachod">ZACHÓD SOBÓTKA</div>
+      <div class="meta">03.05.2026 · 11:00</div>
+    </div>
+
+    <!-- Kolejka 17 -->
+    <div class="matchday-label">Kolejka 17 · 10.05.2026</div>
+    <div class="match-row">
+      <div class="team zachod">ZACHÓD SOBÓTKA <span class="badge-home">DOM</span></div>
+      <div class="score upcoming">– : –</div>
+      <div class="team team-away">KS SPARTA PUSTKÓW ŻURAWSKI</div>
+      <div class="meta">10.05.2026 · 11:00</div>
+    </div>
+
+    <!-- Kolejka 18 -->
+    <div class="matchday-label">Kolejka 18 · 17.05.2026</div>
+    <div class="match-row">
+      <div class="team">KP II KOBIERZYCE <span class="badge-home">DOM</span></div>
+      <div class="score upcoming">– : –</div>
+      <div class="team team-away zachod">ZACHÓD SOBÓTKA</div>
+      <div class="meta">17.05.2026 · 11:00<br/>Sportowa 28, Kobierzyce</div>
+    </div>
+
+    <!-- Kolejka 19 -->
+    <div class="matchday-label">Kolejka 19 · 24.05.2026</div>
+    <div class="match-row">
+      <div class="team">KS MAGNICE <span class="badge-home">DOM</span></div>
+      <div class="score upcoming">– : –</div>
+      <div class="team team-away zachod">ZACHÓD SOBÓTKA</div>
+      <div class="meta">24.05.2026 · 14:00<br/>Parkowa 20, Kobierzyce</div>
+    </div>
+
+    <!-- Kolejka 20 -->
+    <div class="matchday-label">Kolejka 20 · 31.05.2026</div>
+    <div class="match-row">
+      <div class="team zachod">ZACHÓD SOBÓTKA <span class="badge-home">DOM</span></div>
+      <div class="score upcoming">– : –</div>
+      <div class="team team-away">POLONIA JAKSONÓW</div>
+      <div class="meta">31.05.2026 · 11:00</div>
+    </div>
+
+    <!-- Kolejka 21 -->
+    <div class="matchday-label">Kolejka 21 · 07.06.2026</div>
+    <div class="match-row">
+      <div class="team">GLKS MIETKÓW <span class="badge-home">DOM</span></div>
+      <div class="score upcoming">– : –</div>
+      <div class="team team-away zachod">ZACHÓD SOBÓTKA</div>
+      <div class="meta">07.06.2026 · 11:00<br/>Bystrzycka 1, Mietków</div>
+    </div>
+
+    <!-- Kolejka 22 -->
+    <div class="matchday-label">Kolejka 22 · 14.06.2026</div>
+    <div class="match-row">
+      <div class="team zachod">ZACHÓD SOBÓTKA <span class="badge-home">DOM</span></div>
+      <div class="score upcoming">– : –</div>
+      <div class="team team-away">KS PIOTROWICE</div>
+      <div class="meta">14.06.2026 · 11:00</div>
+    </div>
+  </div>
+
+  <!-- LEGENDA -->
+  <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:#666;">
+    <span style="display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:16px;height:16px;background:#003DA5;border-radius:2px;"></span> Zwycięstwo</span>
+    <span style="display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:16px;height:16px;background:#cc0000;border-radius:2px;"></span> Porażka</span>
+    <span style="display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:16px;height:16px;background:#777;border-radius:2px;"></span> Remis</span>
+    <span style="display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:16px;height:16px;background:#eee;border-radius:2px;"></span> Mecz nierozegrany</span>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer style="background:#111;padding:20px 16px;text-align:center;">
+  <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:8px;">
+    <img src="logo2.jpg" alt="MKS Zachód Sobótka" style="height:36px;width:auto;object-fit:contain;" />
+    <div style="text-align:left;">
+      <div style="font-size:12px;font-weight:900;color:#fff;letter-spacing:1px;">MKS ZACHÓD SOBÓTKA</div>
+      <div style="font-size:9px;color:#F5C400;letter-spacing:2px;">ZAŁOŻONY 1998</div>
+    </div>
+  </div>
+  <p style="font-size:10px;color:#555;">© 2026 Miejski Klub Sportowy Zachód Sobótka</p>
+</footer>
+
+</body>
+</html>

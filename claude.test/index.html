@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KS Zachód Sobótka - Oficjalny serwis</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'club-blue': '#003DA5',
+            'club-yellow': '#F5C400',
+            'club-dark': '#0a0a0a',
+            'club-gray': '#1a1a1a',
+          },
+          fontFamily: {
+            sans: ['Arial', 'Helvetica', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff;
+    }
+
+    .hero-overlay {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0.1) 100%);
+    }
+
+    .club-btn {
+      background: #003DA5;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .club-btn:hover {
+      background: #002d80;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #111;
+      border-left: 4px solid #003DA5;
+      padding-left: 10px;
+      margin-bottom: 16px;
+    }
+
+    .news-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .news-card {
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .news-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.4;
+      color: #111;
+      padding: 10px;
+    }
+
+    .dark-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dark-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .dark-card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+      padding: 12px 10px 8px;
+    }
+
+    .dark-card-title {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .product-img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      background: #f5f5f5;
+    }
+
+    .stat-num {
+      font-size: 42px;
+      font-weight: 900;
+      color: #003DA5;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
+    .top-nav-link {
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0 8px;
+      white-space: nowrap;
+      opacity: 0.9;
+      cursor: pointer;
+    }
+
+    .top-nav-link:hover {
+      opacity: 1;
+      color: #F5C400;
+    }
+
+    .tag-blue {
+      background: #003DA5;
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      display: inline-block;
+    }
+
+    .tag-yellow {
+      background: #F5C400;
+      color: #111;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      display: inline-block;
+    }
+
+    .nav-active {
+      color: #F5C400 !important;
+    }
+
+    .player-card {
+      background: #1a1a1a;
+      overflow: hidden;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .mob-1col {
+        grid-template-columns: 1fr !important;
+      }
+
+      .mob-2col {
+        grid-template-columns: 1fr 1fr !important;
+      }
+
+      .mob-hide {
+        display: none !important;
+      }
+
+      .mob-wrap {
+        flex-wrap: wrap !important;
+        gap: 16px !important;
+        justify-content: center !important;
+      }
+
+      .mob-hero-big {
+        font-size: 26px !important;
+        letter-spacing: 1px !important;
+      }
+
+      .mob-hero-sub {
+        font-size: 13px !important;
+        letter-spacing: 3px !important;
+      }
+
+      .mob-hero-label {
+        font-size: 11px !important;
+        letter-spacing: 2px !important;
+      }
+
+      .mob-pad {
+        padding: 28px 12px !important;
+      }
+
+      section {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+      }
+
+      .top-nav-link {
+        padding: 0 5px !important;
+        font-size: 10px !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-white">
+
+  <!-- ==================== TOP BAR ==================== -->
+  <div class="bg-black border-b border-gray-800" style="min-height:40px;">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-3" style="height:40px;">
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2 flex-shrink-0" style="text-decoration:none;">
+        <img src="logo2.jpg" alt="MKS Zachód Sobótka" style="height:36px;width:auto;object-fit:contain;" />
+        <div>
+          <div style="font-size:11px;font-weight:900;color:#fff;letter-spacing:1px;line-height:1;">MKS ZACHÓD</div>
+          <div style="font-size:7px;color:#F5C400;letter-spacing:2px;font-weight:700;">SOBÓTKA</div>
+        </div>
+      </a>
+      <!-- Nav links -->
+      <nav class="flex items-center gap-1 overflow-x-auto">
+        <a href="aktualnosci.html" class="top-nav-link nav-active">Aktualności</a>
+        <a href="o-nas.html" class="top-nav-link">O nas</a>
+        <a href="druzyna.html" class="top-nav-link">Drużyna</a>
+        <a href="terminarz.html" class="top-nav-link">Terminarz</a>
+        <a href="kontakt.html" class="top-nav-link">Kontakt</a>
+      </nav>
+      <!-- Right side: empty -->
+      <div class="flex items-center gap-3 flex-shrink-0"></div>
+    </div>
+  </div>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section style="position:relative;width:100%;height:460px;overflow:hidden;">
+    <!-- Real photo background -->
+    <img src="sobotka.jpg" alt="KS Zachód Sobótka"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;" />
+
+    <!-- Dark overlay for readability -->
+    <div
+      style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.25) 100%);">
+    </div>
+
+    <!-- Blue tint overlay -->
+    <div style="position:absolute;inset:0;background:rgba(0,20,70,0.3);"></div>
+
+    <!-- Tag top-left -->
+    <div style="position:absolute;top:16px;left:16px;">
+      <span class="tag-yellow" style="font-size:10px;padding:3px 8px;">IV Liga Dolnośląska</span>
+    </div>
+
+    <!-- Big club name centered -->
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);text-align:center;width:100%;padding:0 16px;">
+      <div style="display:inline-flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:12px;">
+        <!-- Club logo -->
+        <img src="logo2.jpg" class="mob-hide"
+          style="height:128px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.8));margin-bottom:8px;" />
+        <div style="font-size:13px;font-weight:700;color:#F5C400;letter-spacing:4px;text-transform:uppercase;text-shadow:0 1px 6px rgba(0,0,0,0.9);">Miejski Klub Sportowy</div>
+        <div class="mob-hero-big" style="font-size:42px;font-weight:900;color:#F5C400;letter-spacing:3px;line-height:1;text-shadow:0 3px 16px rgba(0,0,0,0.9);">ZACHÓD</div>
+        <div class="mob-hero-sub" style="font-size:22px;font-weight:700;color:#F5C400;letter-spacing:6px;text-shadow:0 2px 10px rgba(0,0,0,0.9);">SOBÓTKA</div>
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.7);letter-spacing:3px;text-transform:uppercase;margin-top:4px;text-shadow:0 1px 4px rgba(0,0,0,0.9);">
+        Założony 1998 · Sobótka, Dolny Śląsk</div>
+    </div>
+
+
+    <!-- Bottom strip -->
+    <div
+      style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,0.75);padding:7px 20px;display:flex;align-items:center;justify-content:center;gap:20px;border-top:1px solid rgba(245,196,0,0.3);">
+      <span style="font-size:9px;color:#aaa;text-transform:uppercase;letter-spacing:1px;">Sponsorzy główni:</span>
+      <span style="font-size:13px;font-weight:900;color:#F5C400;letter-spacing:1px;">Gmina Sobótka</span>
+      <span style="font-size:11px;color:#888;">·</span>
+      <span style="font-size:12px;font-weight:900;color:#fff;letter-spacing:0.5px;">Ministerstwo Sportu i
+        Turystyki</span>
+    </div>
+  </section>
+
+  <!-- ==================== AKTUALNOŚCI ==================== -->
+  <section class="bg-white py-8 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="section-title">Aktualności</div>
+
+      <!-- Main row: 1 big left + 2 stacked right -->
+      <div class="mob-1col" style="display:grid;grid-template-columns:1.6fr 1fr;gap:12px;margin-bottom:12px;">
+
+        <!-- Big card left -->
+        <a href="aktualnosci.html" class="news-card" style="border:1px solid #eee;text-decoration:none;display:block;">
+          <div style="height:230px;position:relative;overflow:hidden;">
+            <img src="pexels-aleksandar069-3684122.jpg"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;" />
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.8),rgba(0,0,0,0.1));">
+            </div>
+            <span class="tag-yellow" style="position:absolute;top:8px;left:8px;">Sparing</span>
+            <div style="position:absolute;bottom:8px;left:8px;right:8px;">
+              <div
+                style="font-size:14px;font-weight:900;color:#fff;line-height:1.3;text-shadow:0 1px 4px rgba(0,0,0,0.8);">
+                Sparing w Żarowie: Zachód wygrywa 4:2 w kolejnym meczu kontrolnym!</div>
+            </div>
+          </div>
+          <div style="padding:10px 12px;">
+            <div style="font-size:10px;color:#aaa;margin-bottom:5px;">1 mar 2026</div>
+            <p style="font-size:12px;color:#555;line-height:1.6;">Dzisiejszy sparing rozegraliśmy w Żarowie z miejscową
+              drużyną występującą w B klasie. Mecz zakończył się sukcesem — Zachód strzelił 4 bramki, tracąc 2.
+              Strzelcy: Ksawery Krzemiński 3, Borys Hajdamowicz 1. Był to kolejny mecz kontrolny w okresie
+              przygotowawczym.</p>
+          </div>
+        </a>
+
+        <!-- 2 stacked cards right -->
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <!-- Card 2 -->
+          <a href="terminarz.html" class="news-card"
+            style="border:1px solid #eee;flex:1;text-decoration:none;display:block;">
+            <div style="height:120px;position:relative;overflow:hidden;">
+              <img src="pexels-pixabay-47730.jpg"
+                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom;" />
+              <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.75),transparent);">
+              </div>
+              <span class="tag-blue" style="position:absolute;top:8px;left:8px;">Terminarz</span>
+            </div>
+            <div style="padding:8px 10px;">
+              <div style="font-size:10px;color:#aaa;margin-bottom:3px;">Sezon 2025/2026</div>
+              <div style="font-size:12px;font-weight:700;line-height:1.4;color:#111;">Terminarz rozgrywek – Klasa B Grupa 7 Wrocław</div>
+            </div>
+          </a>
+
+          <!-- Card 3 -->
+          <div class="news-card" style="border:1px solid #eee;flex:1;display:block;">
+            <div style="height:120px;position:relative;overflow:hidden;">
+              <img src="pexels-kampus-8941567.jpg"
+                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;" />
+              <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.75),transparent);">
+              </div>
+              <span class="tag-yellow" style="position:absolute;top:8px;left:8px;">Akademia</span>
+            </div>
+            <div style="padding:8px 10px;">
+              <div style="font-size:10px;color:#aaa;margin-bottom:3px;">26 lut 2026</div>
+              <div style="font-size:12px;font-weight:700;line-height:1.4;color:#111;">Akademia Zachodu: Ruszają zapisy
+                do grup juniorskich 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second row: 4 small cards -->
+      <div class="mob-2col" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:16px;">
+        <div style="border:1px solid #eee;overflow:hidden;">
+          <div style="height:110px;position:relative;overflow:hidden;">
+            <img src="pexels-aleksandar069-3684122.jpg"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;" />
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65),transparent);">
+            </div>
+            <span class="tag-yellow" style="position:absolute;top:6px;left:6px;font-size:8px;">IV Liga</span>
+          </div>
+        </div>
+        <div style="border:1px solid #eee;overflow:hidden;">
+          <div style="height:110px;position:relative;overflow:hidden;">
+            <img src="pexels-kampus-8941650.jpg"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;" />
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65),transparent);">
+            </div>
+            <span class="tag-blue" style="position:absolute;top:6px;left:6px;font-size:8px;">Trening</span>
+          </div>
+        </div>
+        <div style="border:1px solid #eee;overflow:hidden;">
+          <div style="height:110px;position:relative;overflow:hidden;">
+            <img src="pexels-kampus-8941567.jpg"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;" />
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65),transparent);">
+            </div>
+            <span class="tag-yellow" style="position:absolute;top:6px;left:6px;font-size:8px;">Akademia</span>
+          </div>
+        </div>
+        <div style="border:1px solid #eee;overflow:hidden;">
+          <div style="height:110px;position:relative;overflow:hidden;">
+            <img src="pexels-pixabay-47730.jpg"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom;" />
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.65),transparent);">
+            </div>
+            <span class="tag-blue" style="position:absolute;top:6px;left:6px;font-size:8px;">Boisko</span>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+
+  <!-- ==================== STADION / WIRTUALNY SPACER ==================== -->
+  <section
+    style="position:relative;min-height:260px;background:linear-gradient(135deg,#001029 0%,#001a4a 40%,#000d2a 100%);padding:40px 16px;overflow:hidden;">
+    <div
+      style="position:absolute;inset:0;opacity:0.3;background:repeating-linear-gradient(0deg,transparent,transparent 20px,rgba(255,255,255,0.02) 20px,rgba(255,255,255,0.02) 21px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,0.01) 40px,rgba(255,255,255,0.01) 41px);">
+    </div>
+
+    <div class="max-w-6xl mx-auto" style="position:relative;">
+      <div class="mob-1col" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;">
+        <div>
+          <h2 style="font-size:24px;font-weight:900;color:#fff;line-height:1.2;margin-bottom:16px;">
+            Miejski Klub Sportowy<br />Zachód Sobótka –<br />nasz stadion!
+          </h2>
+          <div style="display:flex;gap:24px;margin-bottom:20px;">
+            <div style="text-align:center;">
+              <div style="font-size:28px;font-weight:900;color:#F5C400;line-height:1;">1998</div>
+              <div style="font-size:9px;color:#aaa;text-transform:uppercase;letter-spacing:1px;margin-top:3px;">Rok
+                założenia</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:28px;font-weight:900;color:#F5C400;line-height:1;">800</div>
+              <div style="font-size:9px;color:#aaa;text-transform:uppercase;letter-spacing:1px;margin-top:3px;">Miejsc
+              </div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:28px;font-weight:900;color:#F5C400;line-height:1;">2</div>
+              <div style="font-size:9px;color:#aaa;text-transform:uppercase;letter-spacing:1px;margin-top:3px;">Boiska
+              </div>
+            </div>
+          </div>
+          <p style="font-size:12px;color:#aaa;line-height:1.6;margin-bottom:16px;">
+            Stadion Sobótka ul. Polna 9 — tu gra Miejski Klub Sportowy Zachód Sobótka. Zapraszamy na mecze domowe!
+          </p>
+          <button class="club-btn" onclick="document.getElementById('modal-mapa').style.display='flex'">Dojazd i parking →</button>
+        </div>
+        <div style="position:relative;">
+          <div style="width:100%;height:200px;position:relative;overflow:hidden;border:2px solid rgba(245,196,0,0.3);">
+            <img src="pexels-pixabay-47730.jpg"
+              style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+            <div style="position:absolute;inset:0;background:rgba(0,10,40,0.35);"></div>
+            <div style="position:absolute;bottom:10px;left:12px;">
+              <div
+                style="font-size:12px;font-weight:700;color:#F5C400;letter-spacing:1px;text-shadow:0 1px 4px rgba(0,0,0,0.9);">
+                Stadion Sobótka · ul. Polna 9</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:16px;font-size:12px;color:#666;">
+        <span style="color:#F5C400;font-weight:700;">▶</span> Sobótka – u podnóża Ślęży!
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== AKADEMIA PIŁKARSKA ==================== -->
+  <section
+    style="position:relative;min-height:220px;background:linear-gradient(135deg,#0a0d1a 0%,#001a4a 100%);padding:40px 16px;overflow:hidden;">
+    <div
+      style="position:absolute;right:0;top:0;bottom:0;width:50%;background:linear-gradient(135deg,#001a4a,#002d80);clip-path:polygon(15% 0,100% 0,100% 100%,0 100%);">
+    </div>
+
+    <div class="max-w-6xl mx-auto mob-1col"
+      style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;">
+      <div>
+        <div
+          style="font-size:10px;color:#F5C400;font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;">
+          Młodzież</div>
+        <h2 style="font-size:22px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:12px;">
+          Akademia Piłkarska MKS Zachód Sobótka – kształtujemy przyszłość!
+        </h2>
+        <p style="font-size:12px;color:#aaa;line-height:1.6;margin-bottom:20px;">
+          Akademia prowadzi szkolenie dla dzieci i młodzieży w grupach wiekowych: Żaki, Orliki, Młodziki, Trampkarze i
+          Juniorzy. Dołącz do nas!
+        </p>
+        <a href="kontakt.html" class="club-btn" style="display:inline-block;text-decoration:none;">Napisz do nas →</a>
+      </div>
+      <div style="text-align:right;">
+        <img src="pexels-kampus-8941567.jpg" style="width:100%;max-width:420px;height:220px;object-fit:cover;object-position:center top;display:inline-block;" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== POZNAJ PIERWSZĄ DRUŻYNĘ ==================== -->
+  <section style="background:#111;padding:32px 16px;">
+    <div class="max-w-6xl mx-auto">
+      <div
+        style="font-size:20px;font-weight:900;text-transform:uppercase;color:#fff;border-left:4px solid #003DA5;padding-left:10px;margin-bottom:16px;">
+        Poznaj pierwszą drużynę
+      </div>
+
+      <div class="mob-2col" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;">
+
+        <!-- Player 1 -->
+        <div class="player-card" style="position:relative;cursor:pointer;">
+          <div
+            style="height:220px;background:linear-gradient(180deg,#001a4a 0%,#000d2a 100%);position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;">
+            <div
+              style="font-size:48px;font-weight:900;color:rgba(245,196,0,0.12);position:absolute;top:4px;left:8px;line-height:1;">
+              1</div>
+            <svg width="80" height="150" viewBox="0 0 80 180" style="position:absolute;bottom:0;">
+              <ellipse cx="40" cy="25" rx="15" ry="18" fill="#1a2a3a" />
+              <path d="M20,45 Q40,35 60,45 L65,120 L55,120 L50,80 L30,80 L25,120 L15,120 Z" fill="#003DA5" />
+              <path d="M55,120 L60,165 L50,165 L45,135 L35,135 L30,165 L20,165 L25,120 Z" fill="#111" />
+            </svg>
+          </div>
+          <div style="background:#1a1a1a;padding:10px;border-top:2px solid #F5C400;">
+            <div style="font-size:9px;color:#F5C400;font-weight:700;text-transform:uppercase;letter-spacing:1px;">
+              Bramkarz</div>
+            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:2px;">Marek Kowalski</div>
+          </div>
+        </div>
+
+        <!-- Player 2 -->
+        <div class="player-card" style="position:relative;cursor:pointer;">
+          <div
+            style="height:220px;background:linear-gradient(180deg,#001a4a 0%,#000d2a 100%);position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;">
+            <div
+              style="font-size:48px;font-weight:900;color:rgba(245,196,0,0.12);position:absolute;top:4px;left:8px;line-height:1;">
+              5</div>
+            <svg width="80" height="150" viewBox="0 0 80 180" style="position:absolute;bottom:0;">
+              <ellipse cx="40" cy="25" rx="15" ry="18" fill="#1a2a3a" />
+              <path d="M20,45 Q40,35 60,45 L65,120 L55,120 L50,80 L30,80 L25,120 L15,120 Z" fill="#003DA5" />
+              <path d="M55,120 L60,165 L50,165 L45,135 L35,135 L30,165 L20,165 L25,120 Z" fill="#111" />
+            </svg>
+          </div>
+          <div style="background:#1a1a1a;padding:10px;border-top:2px solid #F5C400;">
+            <div style="font-size:9px;color:#F5C400;font-weight:700;text-transform:uppercase;letter-spacing:1px;">
+              Obrońca</div>
+            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:2px;">Piotr Nowak</div>
+          </div>
+        </div>
+
+        <!-- Player 3 -->
+        <div class="player-card" style="position:relative;cursor:pointer;">
+          <div
+            style="height:220px;background:linear-gradient(180deg,#001a4a 0%,#000d2a 100%);position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;">
+            <div
+              style="font-size:48px;font-weight:900;color:rgba(245,196,0,0.12);position:absolute;top:4px;left:8px;line-height:1;">
+              10</div>
+            <svg width="80" height="150" viewBox="0 0 80 180" style="position:absolute;bottom:0;">
+              <ellipse cx="40" cy="25" rx="15" ry="18" fill="#1a2a3a" />
+              <path d="M20,45 Q40,35 60,45 L65,120 L55,120 L50,80 L30,80 L25,120 L15,120 Z" fill="#F5C400" />
+              <path d="M55,120 L60,165 L50,165 L45,135 L35,135 L30,165 L20,165 L25,120 Z" fill="#111" />
+            </svg>
+          </div>
+          <div style="background:#1a1a1a;padding:10px;border-top:2px solid #F5C400;">
+            <div style="font-size:9px;color:#F5C400;font-weight:700;text-transform:uppercase;letter-spacing:1px;">
+              Pomocnik</div>
+            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:2px;">Tomasz Wiśniewski</div>
+          </div>
+        </div>
+
+        <!-- Player 4 -->
+        <div class="player-card" style="position:relative;cursor:pointer;">
+          <div
+            style="height:220px;background:linear-gradient(180deg,#001a4a 0%,#000d2a 100%);position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;">
+            <div
+              style="font-size:48px;font-weight:900;color:rgba(245,196,0,0.12);position:absolute;top:4px;left:8px;line-height:1;">
+              9</div>
+            <svg width="80" height="150" viewBox="0 0 80 180" style="position:absolute;bottom:0;">
+              <ellipse cx="40" cy="25" rx="15" ry="18" fill="#1a2a3a" />
+              <path d="M20,45 Q40,35 60,45 L65,120 L55,120 L50,80 L30,80 L25,120 L15,120 Z" fill="#003DA5" />
+              <path d="M55,120 L60,165 L50,165 L45,135 L35,135 L30,165 L20,165 L25,120 Z" fill="#111" />
+            </svg>
+          </div>
+          <div style="background:#1a1a1a;padding:10px;border-top:2px solid #F5C400;">
+            <div style="font-size:9px;color:#F5C400;font-weight:700;text-transform:uppercase;letter-spacing:1px;">
+              Napastnik</div>
+            <div style="font-size:13px;font-weight:900;color:#fff;margin-top:2px;">Adam Zając</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;">
+        <button class="club-btn">Poznaj całą drużynę →</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==================== SPONSORZY ==================== -->
+  <section style="background:#fff;padding:32px 16px;border-top:1px solid #eee;">
+    <div class="max-w-6xl mx-auto">
+      <div
+        style="font-size:10px;color:#aaa;text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:24px;">
+        Sponsorzy i partnerzy</div>
+
+      <!-- Rząd 1: główni sponsorzy -->
+      <div style="display:flex;justify-content:center;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:20px;">
+
+        <!-- Gmina Sobótka -->
+        <div style="background:#fff;border:2px solid #003DA5;padding:14px 22px;text-align:center;min-width:160px;">
+          <div style="font-size:9px;color:#003DA5;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">
+            Sponsor główny</div>
+          <div style="font-size:15px;font-weight:900;color:#003DA5;letter-spacing:1px;">Gmina Sobótka</div>
+        </div>
+
+        <!-- Ministerstwo Sportu i Turystyki -->
+        <div style="background:#fff;border:2px solid #CC0000;padding:14px 22px;text-align:center;min-width:200px;">
+          <div style="font-size:9px;color:#CC0000;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">
+            Dofinansowanie</div>
+          <div style="font-size:13px;font-weight:900;color:#CC0000;line-height:1.2;">Ministerstwo Sportu<br />i
+            Turystyki</div>
+        </div>
+
+      </div>
+
+      <!-- Rząd 2: partnerzy -->
+      <div
+        style="display:flex;justify-content:center;align-items:center;gap:16px;flex-wrap:wrap;border-top:1px solid #eee;padding-top:20px;">
+
+        <div style="padding:12px 18px;border:1px solid #ddd;text-align:center;min-width:140px;">
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Partner
+          </div>
+          <div style="font-size:12px;font-weight:900;color:#333;">Harmoni</div>
+          <div style="font-size:10px;color:#666;">Patrycja Filar</div>
+        </div>
+
+        <div style="padding:12px 18px;border:1px solid #ddd;text-align:center;min-width:140px;">
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Partner
+            IT</div>
+          <div style="font-size:12px;font-weight:900;color:#003DA5;">Maxima-IT</div>
+          <div style="font-size:10px;color:#666;">Daniel Burzykowski</div>
+        </div>
+
+        <div style="padding:12px 18px;border:1px solid #ddd;text-align:center;min-width:200px;">
+          <div style="font-size:9px;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px;">Partner
+          </div>
+          <div style="font-size:11px;font-weight:900;color:#333;line-height:1.2;">Strzeblowskie Kopalnie<br />Surowców
+            Mineralnych</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer style="background:#0a0a0a;padding:40px 16px 20px;border-top:1px solid #1a1a1a;">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Logo + nav centered -->
+      <div style="text-align:center;margin-bottom:28px;">
+        <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;">
+          <img src="logo2.jpg" alt="MKS Zachód Sobótka" style="height:48px;width:auto;object-fit:contain;" />
+          <div style="text-align:left;">
+            <div style="font-size:13px;font-weight:900;color:#fff;letter-spacing:1px;">MKS ZACHÓD</div>
+            <div style="font-size:8px;color:#F5C400;letter-spacing:2px;">SOBÓTKA 1998</div>
+          </div>
+        </div>
+        <nav style="display:flex;justify-content:center;flex-wrap:wrap;gap:6px 20px;margin-bottom:16px;">
+          <a href="aktualnosci.html" style="font-size:12px;font-weight:700;color:#aaa;text-decoration:none;text-transform:uppercase;letter-spacing:0.5px;" onmouseover="this.style.color='#F5C400'" onmouseout="this.style.color='#aaa'">Aktualności</a>
+          <a href="o-nas.html" style="font-size:12px;font-weight:700;color:#aaa;text-decoration:none;text-transform:uppercase;letter-spacing:0.5px;" onmouseover="this.style.color='#F5C400'" onmouseout="this.style.color='#aaa'">O nas</a>
+          <a href="druzyna.html" style="font-size:12px;font-weight:700;color:#aaa;text-decoration:none;text-transform:uppercase;letter-spacing:0.5px;" onmouseover="this.style.color='#F5C400'" onmouseout="this.style.color='#aaa'">Drużyna</a>
+          <a href="terminarz.html" style="font-size:12px;font-weight:700;color:#aaa;text-decoration:none;text-transform:uppercase;letter-spacing:0.5px;" onmouseover="this.style.color='#F5C400'" onmouseout="this.style.color='#aaa'">Terminarz</a>
+          <a href="kontakt.html" style="font-size:12px;font-weight:700;color:#aaa;text-decoration:none;text-transform:uppercase;letter-spacing:0.5px;" onmouseover="this.style.color='#F5C400'" onmouseout="this.style.color='#aaa'">Kontakt</a>
+        </nav>
+        <div style="font-size:10px;color:#444;">Stadion Sobótka, ul. Polna · 55-050 Sobótka · kontakt@mks-zachod-sobotka.pl</div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div style="border-top:1px solid #1a1a1a;padding-top:16px;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:16px;">
+        <div style="font-size:10px;color:#444;">© 2026 Miejski Klub Sportowy Zachód Sobótka. Wszelkie prawa zastrzeżone.</div>
+        <a onclick="document.getElementById('modal-pp').style.display='flex'" style="font-size:10px;color:#444;cursor:pointer;text-decoration:none;" onmouseover="this.style.color='#F5C400'" onmouseout="this.style.color='#444'">Polityka prywatności</a>
+      </div>
+    </div>
+  </footer>
+
+<!-- MODAL POLITYKA PRYWATNOŚCI -->
+<div id="modal-pp" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:9999;align-items:center;justify-content:center;padding:16px;">
+  <div onclick="event.stopPropagation()" style="position:relative;max-width:680px;width:100%;max-height:80vh;overflow-y:auto;background:#fff;">
+    <button onclick="document.getElementById('modal-pp').style.display='none'" style="position:sticky;top:0;float:right;width:32px;height:32px;background:#003DA5;color:#fff;border:none;font-size:18px;font-weight:900;cursor:pointer;line-height:1;z-index:1;">×</button>
+    <div style="padding:28px 32px 32px;">
+      <h2 style="font-size:20px;font-weight:900;color:#111;margin-bottom:6px;border-left:4px solid #003DA5;padding-left:10px;">Polityka Prywatności</h2>
+      <p style="font-size:10px;color:#aaa;margin-bottom:20px;">Miejski Klub Sportowy Zachód Sobótka · obowiązuje od 1 stycznia 2024</p>
+
+      <h3 style="font-size:13px;font-weight:900;color:#111;margin-bottom:6px;margin-top:18px;">1. Administrator danych</h3>
+      <p style="font-size:12px;color:#444;line-height:1.7;">Administratorem danych osobowych jest Miejski Klub Sportowy Zachód Sobótka z siedzibą przy ul. Polnej, 55-050 Sobótka. Kontakt: kontakt@mks-zachod-sobotka.pl</p>
+
+      <h3 style="font-size:13px;font-weight:900;color:#111;margin-bottom:6px;margin-top:18px;">2. Zakres zbieranych danych</h3>
+      <p style="font-size:12px;color:#444;line-height:1.7;">Gromadzimy wyłącznie dane niezbędne do realizacji działalności statutowej klubu: imię, nazwisko, adres e-mail, numer telefonu – podawane dobrowolnie za pośrednictwem formularzy kontaktowych lub przy zapisach do sekcji.</p>
+
+      <h3 style="font-size:13px;font-weight:900;color:#111;margin-bottom:6px;margin-top:18px;">3. Cel przetwarzania danych</h3>
+      <p style="font-size:12px;color:#444;line-height:1.7;">Dane przetwarzane są w celu: obsługi korespondencji i zapytań (art. 6 ust. 1 lit. f RODO), prowadzenia ewidencji członków i zawodników (art. 6 ust. 1 lit. b RODO) oraz wypełnienia obowiązków prawnych (art. 6 ust. 1 lit. c RODO).</p>
+
+      <h3 style="font-size:13px;font-weight:900;color:#111;margin-bottom:6px;margin-top:18px;">4. Okres przechowywania</h3>
+      <p style="font-size:12px;color:#444;line-height:1.7;">Dane przechowywane są przez okres niezbędny do realizacji celów, dla których zostały zebrane, nie dłużej jednak niż przez czas wymagany przepisami prawa.</p>
+
+      <h3 style="font-size:13px;font-weight:900;color:#111;margin-bottom:6px;margin-top:18px;">5. Prawa użytkownika</h3>
+      <p style="font-size:12px;color:#444;line-height:1.7;">Każda osoba ma prawo dostępu do swoich danych, ich sprostowania, usunięcia lub ograniczenia przetwarzania, a także prawo do przenoszenia danych i wniesienia sprzeciwu wobec przetwarzania. Skargi można kierować do Prezesa Urzędu Ochrony Danych Osobowych (UODO).</p>
+
+      <h3 style="font-size:13px;font-weight:900;color:#111;margin-bottom:6px;margin-top:18px;">6. Pliki cookies</h3>
+      <p style="font-size:12px;color:#444;line-height:1.7;">Strona internetowa klubu może wykorzystywać pliki cookies wyłącznie w celach technicznych (niezbędnych do prawidłowego działania strony). Nie stosujemy cookies marketingowych ani profilowania.</p>
+
+      <h3 style="font-size:13px;font-weight:900;color:#111;margin-bottom:6px;margin-top:18px;">7. Udostępnianie danych</h3>
+      <p style="font-size:12px;color:#444;line-height:1.7;">Dane nie są sprzedawane ani udostępniane osobom trzecim w celach komercyjnych. Mogą być przekazywane wyłącznie podmiotom uprawnionym na mocy prawa (np. organom podatkowym, ZUS) lub podmiotom przetwarzającym dane w imieniu administratora (dostawcy usług IT).</p>
+
+      <h3 style="font-size:13px;font-weight:900;color:#111;margin-bottom:6px;margin-top:18px;">8. Kontakt</h3>
+      <p style="font-size:12px;color:#444;line-height:1.7;">W sprawach dotyczących ochrony danych osobowych prosimy o kontakt mailowy: kontakt@mks-zachod-sobotka.pl lub pisemnie na adres siedziby klubu.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL MAPA -->
+<div id="modal-mapa" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:9999;align-items:center;justify-content:center;padding:16px;">
+  <div onclick="event.stopPropagation()" style="position:relative;max-width:700px;width:100%;">
+    <button onclick="document.getElementById('modal-mapa').style.display='none'" style="position:absolute;top:-14px;right:-14px;width:32px;height:32px;background:#003DA5;color:#fff;border:none;font-size:18px;font-weight:900;cursor:pointer;line-height:1;z-index:1;">×</button>
+    <img src="mapa.jpg" alt="Dojazd i parking" style="width:100%;display:block;" />
+  </div>
+</div>
+
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
+      }
+    });
+  }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontakt – MKS Zachód Sobótka</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; background: #fff; }
+    .top-nav-link { font-size: 11px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; padding: 0 8px; white-space: nowrap; opacity: 0.9; cursor: pointer; text-decoration: none; }
+    .top-nav-link:hover { opacity: 1; color: #F5C400; }
+    .nav-active { color: #F5C400 !important; }
+    .club-btn { background: #003DA5; color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 12px 24px; border: none; cursor: pointer; width: 100%; margin-top: 8px; }
+    .club-btn:hover { background: #002d80; }
+    .section-title { font-size: 22px; font-weight: 900; text-transform: uppercase; color: #111; border-left: 4px solid #003DA5; padding-left: 12px; margin-bottom: 24px; }
+    input, textarea { width: 100%; padding: 12px 14px; border: 1px solid #ddd; font-family: Arial, sans-serif; font-size: 13px; margin-bottom: 12px; outline: none; }
+    input:focus, textarea:focus { border-color: #003DA5; }
+    label { font-size: 11px; font-weight: 700; color: #555; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="bg-black border-b border-gray-800" style="min-height:40px;">
+  <div class="max-w-6xl mx-auto flex items-center justify-between px-3" style="height:40px;">
+    <a href="index.html" class="flex items-center gap-2 flex-shrink-0" style="text-decoration:none;">
+      <img src="logo2.jpg" alt="MKS Zachód Sobótka" style="height:36px;width:auto;object-fit:contain;" />
+      <div>
+        <div style="font-size:11px;font-weight:900;color:#fff;letter-spacing:1px;line-height:1;">MKS ZACHÓD</div>
+        <div style="font-size:7px;color:#F5C400;letter-spacing:2px;font-weight:700;">SOBÓTKA</div>
+      </div>
+    </a>
+    <nav class="flex items-center gap-1 overflow-x-auto">
+      <a href="aktualnosci.html" class="top-nav-link">Aktualności</a>
+      <a href="o-nas.html" class="top-nav-link">O nas</a>
+      <a href="druzyna.html" class="top-nav-link">Drużyna</a>
+      <a href="terminarz.html" class="top-nav-link">Terminarz</a>
+      <a href="kontakt.html" class="top-nav-link nav-active">Kontakt</a>
+    </nav>
+    <div class="flex-shrink-0"></div>
+  </div>
+</div>
+
+<!-- PAGE HEADER -->
+<div style="background:linear-gradient(135deg,#001a4a,#003DA5);padding:40px 16px;">
+  <div class="max-w-6xl mx-auto">
+    <div style="font-size:11px;color:#F5C400;letter-spacing:3px;text-transform:uppercase;margin-bottom:8px;">MKS Zachód Sobótka</div>
+    <h1 style="font-size:36px;font-weight:900;color:#fff;letter-spacing:1px;">Kontakt</h1>
+  </div>
+</div>
+
+<!-- KONTAKT -->
+<section style="padding:48px 16px;background:#fff;">
+  <div class="max-w-6xl mx-auto" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+
+    <!-- INFO -->
+    <div>
+      <div class="section-title">Dane kontaktowe</div>
+
+      <!-- Adres -->
+      <div style="display:flex;gap:16px;margin-bottom:28px;align-items:flex-start;">
+        <div style="width:44px;height:44px;background:#003DA5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="20" height="20" fill="none" stroke="#F5C400" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        </div>
+        <div>
+          <div style="font-size:11px;color:#003DA5;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Adres</div>
+          <div style="font-size:14px;color:#111;font-weight:700;">Stadion Sobótka, ul. Polna</div>
+          <div style="font-size:13px;color:#555;">55-050 Sobótka, woj. dolnośląskie</div>
+          <a href="https://maps.google.com/?q=Sobótka+ul.+Polna" target="_blank" style="font-size:11px;color:#003DA5;font-weight:700;text-decoration:none;display:inline-block;margin-top:6px;">Otwórz w Google Maps →</a>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div style="display:flex;gap:16px;margin-bottom:28px;align-items:flex-start;">
+        <div style="width:44px;height:44px;background:#003DA5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="20" height="20" fill="none" stroke="#F5C400" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        </div>
+        <div>
+          <div style="font-size:11px;color:#003DA5;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">E-mail</div>
+          <div style="font-size:14px;color:#111;font-weight:700;">kontakt@mks-zachod-sobotka.pl</div>
+          <div style="font-size:13px;color:#555;">Zarząd klubu</div>
+        </div>
+      </div>
+
+      <!-- Treningi -->
+      <div style="display:flex;gap:16px;margin-bottom:28px;align-items:flex-start;">
+        <div style="width:44px;height:44px;background:#003DA5;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="20" height="20" fill="none" stroke="#F5C400" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div>
+          <div style="font-size:11px;color:#003DA5;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Godziny treningów – seniorzy</div>
+          <div style="font-size:13px;color:#111;font-weight:700;">Wtorek, Czwartek: 18:00 – 20:00</div>
+          <div style="font-size:13px;color:#111;font-weight:700;">Sobota: 10:00 – 12:00</div>
+          <div style="font-size:12px;color:#555;margin-top:4px;">Stadion Sobótka, ul. Polna</div>
+        </div>
+      </div>
+
+      <!-- Akademia -->
+      <div style="display:flex;gap:16px;align-items:flex-start;">
+        <div style="width:44px;height:44px;background:#F5C400;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="20" height="20" fill="none" stroke="#003DA5" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div>
+          <div style="font-size:11px;color:#003DA5;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">Akademia piłkarska – zapisy</div>
+          <div style="font-size:13px;color:#111;font-weight:700;">Poniedziałek, Środa, Piątek: 17:00 – 19:00</div>
+          <div style="font-size:12px;color:#555;margin-top:4px;">Grupy wiekowe: Żaki, Orliki, Młodziki, Trampkarze, Juniorzy</div>
+        </div>
+      </div>
+
+      <!-- Mapa -->
+      <div style="margin-top:32px;">
+        <img src="mapa.jpg" alt="Dojazd i parking – Stadion Sobótka" style="width:100%;display:block;border:2px solid #003DA5;" />
+      </div>
+    </div>
+
+    <!-- FORMULARZ -->
+    <div>
+      <div class="section-title">Napisz do nas</div>
+      <form onsubmit="alert('Wiadomość wysłana! Odezwiemy się wkrótce.'); return false;">
+        <div>
+          <label>Imię i nazwisko</label>
+          <input type="text" placeholder="Jan Kowalski" />
+        </div>
+        <div>
+          <label>E-mail</label>
+          <input type="email" placeholder="jan@example.pl" />
+        </div>
+        <div>
+          <label>Temat</label>
+          <input type="text" placeholder="np. Zapisy do akademii" />
+        </div>
+        <div>
+          <label>Wiadomość</label>
+          <textarea rows="6" placeholder="Treść wiadomości..."></textarea>
+        </div>
+        <button type="submit" class="club-btn">Wyślij wiadomość →</button>
+      </form>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0a0a0a;padding:32px 16px;border-top:1px solid #1a1a1a;">
+  <div class="max-w-6xl mx-auto" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <img src="logo2.jpg" alt="MKS Zachód Sobótka" style="height:36px;width:auto;object-fit:contain;" />
+      <div>
+        <div style="font-size:12px;font-weight:900;color:#fff;">MKS ZACHÓD SOBÓTKA</div>
+        <div style="font-size:9px;color:#F5C400;">Stadion Sobótka, ul. Polna · od 1998</div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:#444;">© 2026 Miejski Klub Sportowy Zachód Sobótka</div>
+  </div>
+</footer>
+
+</body>
+</html>
