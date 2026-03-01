@@ -1,4 +1,11 @@
 {
   "sztab": [],
-  "zawodnicy": []
+  "zawodnicy": [
+    {
+      "numer": "1",
+      "imie": "dd ff",
+      "pozycja": "Bramkarz",
+      "koszulka": "blue"
+    }
+  ]
 }
