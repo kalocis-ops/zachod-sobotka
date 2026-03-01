@@ -1,17 +1,4 @@
 {
-  "sztab": [
-    {
-      "rola": "Prezes Zarządu",
-      "imie": "Cezary Rogalski",
-      "inicjal": "Cezar"
-    }
-  ],
-  "zawodnicy": [
-    {
-      "numer": "9",
-      "imie": "hh hh",
-      "pozycja": "Bramkarz",
-      "koszulka": "yellow"
-    }
-  ]
+  "sztab": [],
+  "zawodnicy": []
 }
