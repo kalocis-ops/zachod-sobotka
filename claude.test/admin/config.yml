@@ -46,6 +46,42 @@ collections:
               - { label: "Tag 1 (etykieta)", name: tag1, widget: string, required: false }
               - { label: "Tag 2 (etykieta)", name: tag2, widget: string, required: false }
 
+  - name: "druzyna"
+    label: "Drużyna"
+    files:
+      - name: "lista"
+        label: "Zawodnicy i sztab"
+        file: "data/druzyna.json"
+        fields:
+          - name: sztab
+            label: Sztab szkoleniowy
+            widget: list
+            fields:
+              - { label: "Rola", name: rola, widget: string }
+              - { label: "Imię i nazwisko", name: imie, widget: string }
+              - { label: "Inicjał (litera w kółku)", name: inicjal, widget: string }
+          - name: zawodnicy
+            label: Zawodnicy
+            widget: list
+            fields:
+              - { label: "Numer", name: numer, widget: string }
+              - { label: "Imię i nazwisko", name: imie, widget: string }
+              - label: "Pozycja"
+                name: pozycja
+                widget: select
+                options:
+                  - { label: "Bramkarz", value: "Bramkarz" }
+                  - { label: "Obrońca", value: "Obrońca" }
+                  - { label: "Pomocnik", value: "Pomocnik" }
+                  - { label: "Napastnik", value: "Napastnik" }
+                  - { label: "Napastnik · Kapitan", value: "Napastnik · Kapitan" }
+              - label: "Kolor koszulki"
+                name: koszulka
+                widget: select
+                options:
+                  - { label: "Niebieski", value: "blue" }
+                  - { label: "Żółty", value: "yellow" }
+
   - name: "ustawienia"
     label: "Dane klubu"
     files:
