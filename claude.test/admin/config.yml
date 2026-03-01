@@ -2,7 +2,7 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "uploads"
+media_folder: "claude.test/uploads"
 public_folder: "/uploads"
 
 locale: pl
@@ -14,7 +14,7 @@ collections:
     files:
       - name: "lista"
         label: "Lista wpisów"
-        file: "data/aktualnosci.json"
+        file: "claude.test/data/aktualnosci.json"
         fields:
           - name: wpisy
             label: Wpisy
@@ -51,7 +51,7 @@ collections:
     files:
       - name: "lista"
         label: "Zawodnicy i sztab"
-        file: "data/druzyna.json"
+        file: "claude.test/data/druzyna.json"
         fields:
           - name: sztab
             label: Sztab szkoleniowy
@@ -87,7 +87,7 @@ collections:
     files:
       - name: "kontakt"
         label: "Kontakt i treningi"
-        file: "data/ustawienia.json"
+        file: "claude.test/data/ustawienia.json"
         fields:
           - { label: "Adres stadionu", name: adres, widget: string }
           - { label: "E-mail", name: email, widget: string }
